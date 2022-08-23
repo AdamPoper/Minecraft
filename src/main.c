@@ -6,7 +6,7 @@
 #include "renderer/renderer.h"
 #include "util/timestep.h"
 #include "util/fpsCounter.h"
-#include "block.h"
+#include "world/block.h"
 
 #define WINDOW_WIDTH 1920
 #define WINDOW_HEIGHT 1080

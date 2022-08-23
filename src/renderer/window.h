@@ -5,7 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <stdio.h>
 #include "cglm/vec2.h"
-#include "../camera.h"
+#include "camera.h"
 
 #define MAX_KEYS 512
 #define MAX_MOUSE_BUTTONS 32

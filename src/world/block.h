@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "renderer/vertex.h"
+#include "../renderer/vertex.h"
 
 #define BLOCK_VERTEX_COUNT 36
 
