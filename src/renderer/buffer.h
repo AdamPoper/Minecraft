@@ -5,7 +5,7 @@
 #include "vertex.h"
 #include <stdlib.h>
 #include <string.h>
-#include "../block.h"
+#include "../world/block.h"
 
 typedef struct {
     uint32_t renderID;

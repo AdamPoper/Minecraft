@@ -1,13 +1,11 @@
 #include "block.h"
 
-static void setTexCoord(Vertex* vertex, vec2 texCoord)
-{
+static void setTexCoord(Vertex* vertex, vec2 texCoord) {
     vertex->texCoord[0] = texCoord[0];
     vertex->texCoord[1] = texCoord[1];
 }
 
-static void genDirtGrassBlock(Vertex* vertices) 
-{
+static void genDirtGrassBlock(Vertex* vertices) {
     float allDirtX = 1;
     float allDirtY = 2;
     float dirtGrassX = 2;
@@ -244,16 +242,14 @@ Block* createBlock(uint32_t type)
 
 void destroyBlocks(Block** blocks, size_t count)
 {
-    for(int i = 0; i < count; i++)
-    {
+    for(int i = 0; i < count; i++) {
         free(blocks[i]);        
     }
 }
 
 void translateBlock(Block* block)
 {
-    for(int i = 0; i < BLOCK_VERTEX_COUNT; i++)
-    {
+    for(int i = 0; i < BLOCK_VERTEX_COUNT; i++) {
         block->vertices[i].position[0] += block->position[0];
         block->vertices[i].position[1] += block->position[1];
         block->vertices[i].position[2] += block->position[2];

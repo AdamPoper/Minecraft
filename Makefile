@@ -3,7 +3,7 @@ CFLAGS=-g -Wall -lglfw -framework OpenGL
 
 INC=-I/usr/local/include -Idependencies/include
 
-SRC=$(wildcard src/*.c) $(wildcard src/cglm/*.c) $(wildcard src/util/*.c) $(wildcard src/renderer/*.c)
+SRC=$(wildcard src/*.c) $(wildcard src/cglm/*.c) $(wildcard src/util/*.c) $(wildcard src/renderer/*.c) $(wildcard src/world/*.c)
 EXE=$(SRC:.c=)
 
 all: everything

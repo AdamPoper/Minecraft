@@ -6,7 +6,7 @@
 #include "shader.h"
 #include "window.h"
 #include "textureAtlas.h"
-#include "../block.h"
+#include "../world/block.h"
 
 typedef struct {
     VertexArray vao;
