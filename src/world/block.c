@@ -88,8 +88,7 @@ static void genDirtGrassBlock(Vertex* vertices) {
     setTexCoord(&vertices[35], grassCoords[0]);
 }
 
-static void generateTextureCoords(uint32_t type, Vertex* vertices)
-{
+static void generateTextureCoords(uint32_t type, Vertex* vertices) {
     vec2 coords[4];
     float x = 0.0f;
     float y = 0.0f;
@@ -240,15 +239,13 @@ Block* createBlock(uint32_t type)
     return block;
 }
 
-void destroyBlocks(Block** blocks, size_t count)
-{
+void destroyBlocks(Block** blocks, size_t count) {
     for(int i = 0; i < count; i++) {
         free(blocks[i]);        
     }
 }
 
-void translateBlock(Block* block)
-{
+void translateBlock(Block* block) {
     for(int i = 0; i < BLOCK_VERTEX_COUNT; i++) {
         block->vertices[i].position[0] += block->position[0];
         block->vertices[i].position[1] += block->position[1];
