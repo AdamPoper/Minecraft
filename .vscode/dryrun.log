@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/adampoper/Documents/developer/minecraft'
+gcc -g -Wall -lglfw -framework OpenGL -I/usr/local/include -Idependencies/include -o run src/glad.c src/main.c src/stb_image.c  src/util/fpsCounter.c src/util/perlinNoise.c src/util/timestep.c src/renderer/buffer.c src/renderer/camera.c src/renderer/renderer.c src/renderer/shader.c src/renderer/textureAtlas.c src/renderer/vertexArray.c src/renderer/window.c src/world/block.c src/world/world.c
+make: Leaving directory `/Users/adampoper/Documents/developer/minecraft'
+ 

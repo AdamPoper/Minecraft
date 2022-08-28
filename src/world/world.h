@@ -14,7 +14,6 @@
 
 typedef struct {
     Chunk* chunks;
-    Block* blocks;
     Renderer renderer;
     Window window;
 } World;

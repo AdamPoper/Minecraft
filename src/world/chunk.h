@@ -12,6 +12,10 @@ typedef struct {
     Block* blocks;
     vec3 position;
     World* world;
+    size_t count;
 } Chunk;
+
+Chunk* createChunk();
+void destroyChunk(Chunk* chunk);
 
 #endif
