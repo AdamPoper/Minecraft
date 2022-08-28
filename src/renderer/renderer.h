@@ -7,6 +7,7 @@
 #include "window.h"
 #include "textureAtlas.h"
 #include "../world/block.h"
+#include "../world/chunk.h"
 
 typedef struct {
     VertexArray vao;
@@ -19,5 +20,6 @@ typedef struct {
 void initRenderer(Renderer* renderer, Window* window);
 void drawRenderer(Renderer* renderer);
 void rendererPushBlock(Renderer* renderer, Block* block);
+void rendererPushChunk(Renderer* renderer, Chunk* chunk);
 void renderVertices(Window* window, VertexArray* vao, VertexBuffer* vbo, uint32_t shaderProgram);
 #endif

@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "buffer.h": "c",
+        "world.h": "c",
+        "block.h": "c",
+        "timestep.h": "c",
+        "perlinnoise.h": "c",
+        "vertexarray.h": "c"
+    }
+}

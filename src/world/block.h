@@ -22,8 +22,9 @@
 #define BLOCK_DIRT_GRASS 7
 #define BLOCK_COBBLE_STONE 8
 #define BLOCK_GLASS 9
+#define BLOCK_AIR 10
 
-#define BLOCK_TYPE_COUNT 9
+#define BLOCK_TYPE_COUNT 10
 
 typedef struct {
     uint32_t type;
