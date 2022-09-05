@@ -53,7 +53,6 @@ void renderVertices(Window* window, VertexArray* vao, VertexBuffer* vbo, uint32_
 }
 
 void rendererPushBlock(Renderer* renderer, Block* block) {
-    // vboPushBlock(&renderer->vbo, block);
     vboPush(&renderer->vbo, block->vertices, BLOCK_VERTEX_COUNT);
 }
 
@@ -61,9 +60,3 @@ void destroyRenderer(Renderer* renderer) {
     vboDestroy(&renderer->vbo);
     destroyWindow(renderer->window);
 }
-
-// void rendererPushChunk(Renderer* renderer, Chunk* chunk) {
-//     for(int i = 0; i < chunk->countBlocks; i++) {
-//         rendererPushBlock(chunk->blocks[i]);
-//     }
-// }

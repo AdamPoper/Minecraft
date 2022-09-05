@@ -32,6 +32,12 @@ typedef struct {
     vec3 position;
 } Block;
 
+enum DIRECTION {
+    NORTH, SOUTH,
+    EAST, WEST,
+    UP, DOWN
+};
+
 Block* createBlock(uint32_t type);
 void initBlock(Block* block, uint32_t type);
 void destroyBlocksByCount(Block** blocks, size_t count);
