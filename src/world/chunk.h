@@ -2,20 +2,19 @@
 #define CHUNK_H
 
 #include "block.h"
-#include "world.h"
 
-#define CHUNK_HEIGHT 128
+#define CHUNK_HEIGHT 16
 #define CHUNK_LENGTH 16
 #define CHUNK_WIDTH 16
 
 typedef struct {
     Block* blocks;
     vec3 position;
-    World* world;
-    size_t count;
+    uint32_t countBlocks;
 } Chunk;
 
-Chunk* createChunk();
-void destroyChunk(Chunk* chunk);
+Chunk* createChunks(uint32_t count);
+void initChunk(Chunk* chunk);
+void destroyChunks(Chunk* chunks, uint32_t count);
 
 #endif

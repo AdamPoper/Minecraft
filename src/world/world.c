@@ -9,10 +9,36 @@ World* initWorld() {
     return world;
 }
 
-void genWorld(World* world) {    
-    Block* block = createBlock(BLOCK_DIRT);
-    world->blocks = block;
-    rendererPushBlock(&world->renderer, block);
+void genWorld(World* world) {
+    world->countChunks = 1;
+    Chunk* chunk = createChunks(world->countChunks);
+    world->chunks = chunk;
+    vec3 chunkPos;
+    vec3 blockPos;
+    chunkPos[0] = 0.0f;
+    chunkPos[1] = 0.0f;
+    chunkPos[2] = 0.0f;
+    memcpy(blockPos, chunkPos, sizeof(float) * 3);
+    uint32_t blockIndex = 0;
+#if 1
+    for(int x = 0; x < CHUNK_WIDTH; x++) {
+        blockPos[0] += 1.0f;
+        for(int z = 0; z < CHUNK_LENGTH; z++) {
+            blockPos[2] += 1.0f;
+            for(int y = 0; y < CHUNK_HEIGHT; y++) {
+                blockPos[1] += 1.0f;
+                translateBlockByVectorTransform(&world->chunks->blocks[blockIndex], blockPos);
+                blockIndex++;
+            }
+            blockPos[1] = 0.0f;
+        }
+        blockPos[2] = 0.0f;
+    }
+    for(int i = 0; i < world->chunks->countBlocks; i++) {
+        rendererPushBlock(&world->renderer, &world->chunks->blocks[i]);
+    }
+    destroyChunks(world->chunks, world->countChunks);
+#endif
 }
 
 void onWorldUpdate(World* world) {    
@@ -39,7 +65,7 @@ void onWorldUpdate(World* world) {
 }
 
 void onWorldEnd(World* world) {
-    free(world->blocks);
-    free(world->chunks);
+    destroyRenderer(&world->renderer);
+    destroyChunks(world->chunks, world->countChunks);
     free(world);
 }

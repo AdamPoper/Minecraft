@@ -33,7 +33,11 @@ typedef struct {
 } Block;
 
 Block* createBlock(uint32_t type);
-void destroyBlocks(Block** blocks, size_t count);
+void initBlock(Block* block, uint32_t type);
+void destroyBlocksByCount(Block** blocks, size_t count);
+void destroyBlocks(Block* blocks);
 void translateBlock(Block* block);
-
+void translateBlockByVectorTransform(Block* block, vec3 transform);
+void changeBlockType(Block* block, uint32_t type);
+void printBlockContents(Block* block);
 #endif

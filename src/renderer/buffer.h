@@ -11,14 +11,16 @@ typedef struct {
     uint32_t renderID;
     uint32_t type;
     Vertex* data;
-    size_t count; // number of vertices;
-    size_t capacity; // current vertices capactity;
+    uint32_t count; // number of vertices;
+    uint32_t capacity; // current vertices capactity;
 } VertexBuffer;
 
 VertexBuffer vboCreate();
-void vboDestroy(VertexBuffer* buffer);
-void vboBind(VertexBuffer* buffer);
+void vboInit(VertexBuffer* vbo);
+void vboDestroy(VertexBuffer* vbo);
+void vboBind(VertexBuffer* vbo);
 void vboPush(VertexBuffer* vbo, Vertex* vertices, uint32_t count);
 void vboPushBlock(VertexBuffer* vbo, Block* block);
+void dumpRawBufferContents(VertexBuffer* vbo);
 
 #endif
