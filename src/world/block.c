@@ -129,9 +129,13 @@ static void generateTextureCoords(uint32_t type, Vertex* vertices) {
         case BLOCK_GLASS:
             x = 2;
             y = 0;
+            break;
+        case BLOCK_AIR:
+            x = -1;
+            y = -1;
         break;
         default:
-            printf("no block");
+            printf("no valid block texture");
     }
     coords[0][0] = (x * BLOCK_TEX_SIZE) / ATLAS_WIDTH;       // 0, 0
     coords[0][1] = (y * BLOCK_TEX_SIZE) / ATLAS_HEIGHT;      // 0, 0
@@ -185,12 +189,7 @@ static void generateTextureCoords(uint32_t type, Vertex* vertices) {
     setTexCoord(&vertices[35], coords[0]);
 }
 
-
-Block* createBlock(uint32_t type)
-{
-    Block* block = (Block*)malloc(sizeof(Block) * 1);    
-    block->type = type;
-
+static void initBlockVertices(Block* block) {
     float vertices[] = {
         -0.5f,  0.5f, -0.5f, 0.0f, 0.0f, // coords[3][0], coords[3][1], // 0.0f, 1.0f, // 0
          0.5f,  0.5f, -0.5f, 0.0f, 0.0f, // coords[2][0], coords[2][1], // 1.0f, 1.0f, // 1
@@ -236,10 +235,21 @@ Block* createBlock(uint32_t type)
     };
     generateTextureCoords(block->type, vertices);
     memcpy(block->vertices, vertices, sizeof(Vertex) * BLOCK_VERTEX_COUNT);
+}
+
+Block* createBlock(uint32_t type){
+    Block* block = (Block*)malloc(sizeof(Block) * 1);    
+    block->type = type;    
+    initBlockVertices(block);
     return block;
 }
 
-void destroyBlocks(Block** blocks, size_t count) {
+void initBlock(Block* block, uint32_t type) {
+    block->type = type;
+    initBlockVertices(block);
+}
+
+void destroyBlocksByCount(Block** blocks, size_t count) {
     for(int i = 0; i < count; i++) {
         free(blocks[i]);        
     }
@@ -251,4 +261,26 @@ void translateBlock(Block* block) {
         block->vertices[i].position[1] += block->position[1];
         block->vertices[i].position[2] += block->position[2];
     }
+}
+
+void destroyBlocks(Block* blocks) {
+    free(blocks);
+}
+
+void translateBlockByVectorTransform(Block* block, vec3 transform) {
+    memcpy(block->position, transform, sizeof(float) * 3);
+    // printf("Block Pos: (%f, %f, %f)\n", block->position[0], block->position[1], block->position[2]);
+    // printf("trans Pos: (%f, %f, %f)\n", transform[0], transform[1], transform[2]);
+    translateBlock(block);
+}
+
+void printBlockContents(Block* block) {
+    for(int i = 0; i < BLOCK_VERTEX_COUNT; i++) {
+        printVertex(&block->vertices[i]);
+    }
+}
+
+void changeBlockType(Block* block, uint32_t type) {
+    block->type = type;
+    generateTextureCoords(block->type, block->vertices);
 }

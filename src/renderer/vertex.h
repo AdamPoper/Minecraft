@@ -11,4 +11,5 @@ typedef struct {
     vec2 texCoord;
 } Vertex;
 
+void printVertex(Vertex* v);
 #endif

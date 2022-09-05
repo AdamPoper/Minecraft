@@ -4,6 +4,7 @@ void initRenderer(Renderer* renderer, Window* window) {
     renderer->window = window;
     renderer->vao = vaoCreate();
     renderer->vbo = vboCreate();
+    // vboInit(&renderer->vbo);
     createTextureAtlas(&renderer->atlas, "res/textures/atlas.png");
 
     pushVertexAttrib(&renderer->vao, 3); // position
@@ -52,11 +53,17 @@ void renderVertices(Window* window, VertexArray* vao, VertexBuffer* vbo, uint32_
 }
 
 void rendererPushBlock(Renderer* renderer, Block* block) {
-    vboPushBlock(&renderer->vbo, block);
+    // vboPushBlock(&renderer->vbo, block);
+    vboPush(&renderer->vbo, block->vertices, BLOCK_VERTEX_COUNT);
 }
 
-void rendererPushChunk(Renderer* renderer, Chunk* chunk) {
-    for(int i = 0; i < chunk->count) {
-        rendererPushBlock(chunk->blocks[i]);
-    }
+void destroyRenderer(Renderer* renderer) {
+    vboDestroy(&renderer->vbo);
+    destroyWindow(renderer->window);
 }
+
+// void rendererPushChunk(Renderer* renderer, Chunk* chunk) {
+//     for(int i = 0; i < chunk->countBlocks; i++) {
+//         rendererPushBlock(chunk->blocks[i]);
+//     }
+// }

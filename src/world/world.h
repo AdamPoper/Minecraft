@@ -6,7 +6,6 @@
 #include "../util/fpsCounter.h"
 #include "../util/perlinNoise.h"
 #include "../util/timestep.h"
-#include "block.h"
 #include "chunk.h"
 
 #define WORLD_VIEW_WIDTH 1920
@@ -16,6 +15,7 @@ typedef struct {
     Chunk* chunks;
     Renderer renderer;
     Window window;
+    uint32_t countChunks;
 } World;
 
 World* initWorld();
