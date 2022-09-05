@@ -12,4 +12,5 @@ typedef struct {
 } Vertex;
 
 void printVertex(Vertex* v);
+void printVector3(vec3 vec);
 #endif

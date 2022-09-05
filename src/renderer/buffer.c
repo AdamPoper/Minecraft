@@ -44,7 +44,6 @@ void vboDestroy(VertexBuffer* vbo) {
 }
 
 void vboPushBlock(VertexBuffer* vbo, Block* block) {
-    // printf("pushing block [Vertex Count: %d]\n", vbo->count);
     if(!block) {
         printf("no block\n");
         return;
@@ -64,7 +63,6 @@ void vboPushBlock(VertexBuffer* vbo, Block* block) {
 }
 
 void vboPush(VertexBuffer* vbo, Vertex* vertices, uint32_t count) {
-    printf("VBO old count: %d\n", vbo->count);
     uint32_t oldCount = vbo->count;
     if(oldCount + count >= vbo->capacity) {
         vboResize(vbo);
@@ -75,7 +73,6 @@ void vboPush(VertexBuffer* vbo, Vertex* vertices, uint32_t count) {
         vertexIndex++;
         vbo->count++;
     }
-    printf("VBO new count: %d\n", vbo->count);
 }
 
 void dumpRawBufferContents(VertexBuffer* vbo) {

@@ -20,6 +20,5 @@ void initRenderer(Renderer* renderer, Window* window);
 void drawRenderer(Renderer* renderer);
 void destroyRenderer(Renderer* renderer);
 void rendererPushBlock(Renderer* renderer, Block* block);
-// void rendererPushChunk(Renderer* renderer, Chunk* chunk);
 void renderVertices(Window* window, VertexArray* vao, VertexBuffer* vbo, uint32_t shaderProgram);
 #endif

@@ -10,9 +10,10 @@
 
 #define WORLD_VIEW_WIDTH 1920
 #define WORLD_VIEW_HEIGHT 1080
+#define VISIBLE_CHUNKS 4
 
 typedef struct {
-    Chunk* chunks;
+    Chunk chunks[VISIBLE_CHUNKS];
     Renderer renderer;
     Window window;
     uint32_t countChunks;
