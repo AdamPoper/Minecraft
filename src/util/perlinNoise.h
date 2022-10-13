@@ -5,8 +5,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
-
-typedef float vec2[2];
+#include <cglm/vec2.h>
 
 typedef struct {
     vec2 size;
@@ -16,6 +15,6 @@ typedef struct {
 
 void initNoise(PerlinNoise* noise, vec2 size);
 void deleteNoise(PerlinNoise* noise);
-float getNoise(PerlinNoise* pNoise, int x, int y);
-
+float getNoise(PerlinNoise* noise, int x, int y);
+void printNoise(PerlinNoise* noise);
 #endif

@@ -84,7 +84,6 @@ uint32_t createShaderProgram(Shader* vertexShader, Shader* fragmentShader)
         char infoLog[512];
         glGetShaderInfoLog(program, 512, NULL, infoLog);
         printf("shader id: %d failed\n", program);        
-        printf("yo shader program died");
         printf("%s\n", infoLog);
     }
     return program;
