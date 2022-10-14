@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "chrono": "c",
+        "unordered_map": "c",
+        "bitset": "c",
+        "vec2.h": "c"
+    }
+}

@@ -50,7 +50,6 @@ void vboPushBlock(VertexBuffer* vbo, Block* block) {
     }
     uint32_t count = vbo->count;
     if(vbo->count + BLOCK_VERTEX_COUNT >= vbo->capacity) {
-        printf("resizing\n");
         vboResize(vbo);        
     }   
     // add the block vertex data to the vertex buffer

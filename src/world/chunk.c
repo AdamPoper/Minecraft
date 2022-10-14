@@ -89,6 +89,7 @@ static int checkNeighboringBlocks(Block* block, Block* otherBlocks, uint32_t cou
         ) {
             if(otherBlocks[i].type == BLOCK_AIR) {
                 addBlockToRenderer = 1;
+                break;
             }
         }
         if(compareDirections(north, otherBlocks[i].position)) {
@@ -120,11 +121,14 @@ static int checkNeighboringBlocks(Block* block, Block* otherBlocks, uint32_t cou
 void optimizeChunk(Chunk* chunk, Block** blocksToRenderOut, uint32_t* numberOfBlocks) {
     Block** blocksToRender = (Block**)malloc(sizeof(Block*) * chunk->countBlocks);
     for(int i = 0; i < chunk->countBlocks; i++) {
-        if(checkNeighboringBlocks(&chunk->blocks[i], chunk->blocks, chunk->countBlocks)) {
-            blocksToRender[(*numberOfBlocks)++] = &chunk->blocks[i];            
-        }
-        blocksToRender[i] = &chunk->blocks[i];
+        if(
+            checkNeighboringBlocks(&chunk->blocks[i], chunk->blocks, chunk->countBlocks)
+            && chunk->blocks[i].type != BLOCK_AIR
+        ) {
+            Block* b = &chunk->blocks[i];
+            blocksToRender[(*numberOfBlocks)++] = b;
+        }        
     }
-    memcpy(blocksToRenderOut, blocksToRender, sizeof(Block*) * chunk->countBlocks);   
+    memcpy(blocksToRenderOut, blocksToRender, sizeof(Block*) * (*numberOfBlocks));
     free(blocksToRender);
 }
