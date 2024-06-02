@@ -3,7 +3,7 @@
 
 #include "block.h"
 
-#define CHUNK_HEIGHT 16
+#define CHUNK_HEIGHT 32
 #define CHUNK_LENGTH 16
 #define CHUNK_WIDTH  16
 

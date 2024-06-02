@@ -6,7 +6,8 @@
 #include "util/perlinNoise.h"
 
 int main() {
-    World* world = initWorld();
+    World* world = (World*) malloc(sizeof(World) * 1);
+    initWorld(world);
     onWorldUpdate(world);
     onWorldEnd(world);
 }

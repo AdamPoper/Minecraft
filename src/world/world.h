@@ -20,7 +20,7 @@ typedef struct {
     PerlinNoise noise;
 } World;
 
-World* initWorld();
+void initWorld(World* world);
 void genWorld(World* world);
 void onWorldUpdate(World* world);
 void onWorldEnd(World* world);
