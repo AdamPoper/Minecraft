@@ -88,7 +88,7 @@ static void genDirtGrassBlock(Vertex* vertices) {
     setTexCoord(&vertices[35], grassCoords[0]);
 }
 
-static void generateTextureCoords(uint32_t type, Vertex* vertices) {
+static void generateTextureCoords(uint16_t type, Vertex* vertices) {
     vec2 coords[4];
     float x = 0.0f;
     float y = 0.0f;
@@ -237,14 +237,14 @@ static void initBlockVertices(Block* block) {
     memcpy(block->vertices, vertices, sizeof(Vertex) * BLOCK_VERTEX_COUNT);
 }
 
-Block* createBlock(uint32_t type){
+Block* createBlock(uint16_t type){
     Block* block = (Block*)malloc(sizeof(Block) * 1);    
     block->type = type;    
     initBlockVertices(block);
     return block;
 }
 
-void initBlock(Block* block, uint32_t type) {
+void initBlock(Block* block, uint16_t type) {
     block->type = type;
     initBlockVertices(block);
 }
@@ -280,7 +280,7 @@ void printBlockContents(Block* block) {
     }
 }
 
-void changeBlockType(Block* block, uint32_t type) {
+void changeBlockType(Block* block, uint16_t type) {
     block->type = type;
     generateTextureCoords(block->type, block->vertices);
 }

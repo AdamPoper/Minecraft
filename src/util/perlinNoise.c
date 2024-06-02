@@ -43,7 +43,7 @@ void genNoise(PerlinNoise* pNoise) {
                 float linIntSampleB = (1.0f - blendX) * pNoise->seedArray[sampleY2 * width + sampleX1] + blendX * pNoise->seedArray[sampleY2 * width + sampleX2];                
                 noise += (blendY * (linIntSampleB - linIntSampleT) + linIntSampleT) * scale;                
                 scaleAcc += scale;
-                scale /= 0.2f;             
+                scale /= 0.8f;             
             }            
             pNoise->outputArray[y * width + x] = noise / scaleAcc;
         }

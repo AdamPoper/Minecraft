@@ -27,7 +27,7 @@
 #define BLOCK_TYPE_COUNT 10
 
 typedef struct {
-    uint32_t type;
+    uint16_t type;
     Vertex vertices[BLOCK_VERTEX_COUNT];
     vec3 position;
 } Block;
@@ -38,12 +38,12 @@ enum DIRECTION {
     UP, DOWN
 };
 
-Block* createBlock(uint32_t type);
-void initBlock(Block* block, uint32_t type);
+Block* createBlock(uint16_t type);
+void initBlock(Block* block, uint16_t type);
 void destroyBlocksByCount(Block** blocks, size_t count);
 void destroyBlocks(Block* blocks);
 void translateBlock(Block* block);
 void translateBlockByVectorTransform(Block* block, vec3 transform);
-void changeBlockType(Block* block, uint32_t type);
+void changeBlockType(Block* block, uint16_t type);
 void printBlockContents(Block* block);
 #endif
