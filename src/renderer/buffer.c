@@ -44,30 +44,33 @@ void vboDestroy(VertexBuffer* vbo) {
 }
 
 void vboPushBlock(VertexBuffer* vbo, Block* block) {
-    if(!block) {
+    if (!block) {
         printf("no block\n");
         return;
     }
+    
     uint32_t count = vbo->count;
-    if(vbo->count + BLOCK_VERTEX_COUNT >= vbo->capacity) {
+    if (vbo->count + BLOCK_VERTEX_COUNT >= vbo->capacity) {
         vboResize(vbo);        
-    }   
-    // add the block vertex data to the vertex buffer
-    uint32_t blockIndex = 0;
-    for(int i = count; i < count + BLOCK_VERTEX_COUNT; i++) {        
-        vbo->data[i] = block->vertices[blockIndex];
-        blockIndex++;
-        vbo->count++;
+    }
+
+    uint32_t running_count = count;
+    for (int i = 0; i < BLOCK_FACE_COUNT; i++) {
+        for (int j = 0; j < BLOCK_FACE_VERTEX_COUNT; j++) {
+            vbo->data[running_count] = block->blockFaces[i].vertices[j];
+            running_count++;
+            vbo->count++;
+        }
     }
 }
 
 void vboPush(VertexBuffer* vbo, Vertex* vertices, uint32_t count) {
     uint32_t oldCount = vbo->count;
-    if(oldCount + count >= vbo->capacity) {
+    if (oldCount + count >= vbo->capacity) {
         vboResize(vbo);
     }
     uint32_t vertexIndex = 0;
-    for(int i = oldCount; i < oldCount + count; i++) {
+    for (int i = oldCount; i < oldCount + count; i++) {
         vbo->data[i] = vertices[vertexIndex];
         vertexIndex++;
         vbo->count++;
@@ -75,7 +78,7 @@ void vboPush(VertexBuffer* vbo, Vertex* vertices, uint32_t count) {
 }
 
 void dumpRawBufferContents(VertexBuffer* vbo) {
-    for(int i = 0; i < vbo->count; i++) {
+    for (int i = 0; i < vbo->count; i++) {
         printf("Vertex # %d Block # %d ", i, (i / BLOCK_VERTEX_COUNT) + 1);
         printVertex(&vbo->data[i]);
     }

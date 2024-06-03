@@ -52,7 +52,6 @@ static void initChunkBlockPositions(World* world, uint32_t chunkStartIndex, uint
                     translateBlockByVectorTransform(&world->chunks[c].blocks[blockIndex], blockPos);
                     blockIndex++;
                     blockPos[0] += 1.0f;
-                    // printf("Block (%f, %f, %f)\n", blockPos[0], blockPos[1], blockPos[2]);
                 }
                 blockPos[2] += 1.0f;
                 blockPos[0] = world->chunks[c].position[0];
@@ -114,7 +113,7 @@ void genWorld(World* world) {
         initChunk(&world->chunks[i]);
     }
     generateChunks(world);
-    // destroyChunks(world->chunks, world->countChunks);
+    destroyChunks(world->chunks, world->countChunks);
 }
 
 void onWorldUpdate(World* world) {
