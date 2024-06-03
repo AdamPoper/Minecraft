@@ -5,8 +5,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../renderer/vertex.h"
+#include "blockFace.h"
 
-#define BLOCK_VERTEX_COUNT 36
+// #define BLOCK_VERTEX_COUNT 36
+#define BLOCK_FACE_COUNT 6
 
 #define ATLAS_WIDTH 768
 #define ATLAS_HEIGHT 768
@@ -28,7 +30,7 @@
 
 typedef struct {
     uint16_t type;
-    Vertex vertices[BLOCK_VERTEX_COUNT];
+    BlockFace blockFaces[BLOCK_FACE_COUNT];
     vec3 position;
 } Block;
 
@@ -42,7 +44,7 @@ Block* createBlock(uint16_t type);
 void initBlock(Block* block, uint16_t type);
 void destroyBlocksByCount(Block** blocks, size_t count);
 void destroyBlocks(Block* blocks);
-void translateBlock(Block* block);
+// void translateBlock(Block* block);
 void translateBlockByVectorTransform(Block* block, vec3 transform);
 void changeBlockType(Block* block, uint16_t type);
 void printBlockContents(Block* block);

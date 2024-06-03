@@ -7,6 +7,8 @@
 #include <string.h>
 #include "../world/block.h"
 
+#define BLOCK_VERTEX_COUNT (BLOCK_FACE_COUNT * BLOCK_FACE_VERTEX_COUNT)
+
 typedef struct {
     uint32_t renderID;
     uint32_t type;
